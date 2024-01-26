@@ -8,6 +8,7 @@
 #                   a strong password.
 ###############################################################################
 import random
+import string
 
 # CONSTS
 # Const minimum password length
@@ -22,8 +23,8 @@ MIN_SPECIAL_CHAR = 1
 
 # Dict of char types
 CHAR_TYPES = {
-    "alphabet": "abcdef",
-    "numeric": "123",
+    "alphabet": string.ascii_letters,
+    "numeric": string.digits,
     "special": "@#$%"
 }
 
