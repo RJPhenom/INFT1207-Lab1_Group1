@@ -46,13 +46,15 @@ password = ""
 # from a type list (alpha, numeric, special) and return how many we need for
 # the password.
 def get_chars_of_type(num: int, char_type: str):
+    # Get the relevant list of potential chars by type using dict and prep return str var
     chars_selection = CHAR_TYPES[char_type]
     chars_found = ""
 
     for i in range(num):
-        chars_found += chars_selection[i]
+        # Randomizes which char from the selection is added to the list and then appends to ret var
+        char_index = random.randrange(len(chars_selection))
+        chars_found += chars_selection[char_index]
 
-    # TODO: Randomization
     return chars_found
 
 
@@ -61,6 +63,8 @@ def get_chars_of_type(num: int, char_type: str):
 # to build an unsorted string, then randomizes the position of each char in a string, then
 # returns the randomized string as a strong password.
 def build_password_with_chars(alphabet_num: int, numeric_num: int, special_num: int):
+    # Preps return str var and populates it with a concatenation of 3 strs, representing the random chars of
+    # each type we need/want to use in our password.
     temp_password = ""
     temp_password += (get_chars_of_type(alphabet_num, "alphabet")
                       + get_chars_of_type(numeric_num, "numeric")
@@ -103,7 +107,7 @@ while password_len == 0:
 
 
 # Get the desired numeric characters
-alphabet_chars_num = 4#password_len - (numeric_chars_num + special_chars_num)
+alphabet_chars_num = password_len - (numeric_chars_num + special_chars_num)
 
 
 # Build the password
