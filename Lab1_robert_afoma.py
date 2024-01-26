@@ -25,7 +25,7 @@ MIN_SPECIAL_CHAR = 1
 CHAR_TYPES = {
     "alphabet": string.ascii_letters,
     "numeric": string.digits,
-    "special": "@#$%"
+    "special": string.punctuation
 }
 
 
