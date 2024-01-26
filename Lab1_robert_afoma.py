@@ -7,7 +7,7 @@
 #                   of different character inputs from the user to generate
 #                   a strong password.
 ###############################################################################
-
+import random
 
 # CONSTS
 # Const minimum password length
@@ -49,7 +49,7 @@ def get_chars_of_type(num: int, char_type: str):
     chars_found = ""
 
     for i in range(num):
-        chars_found += chars_selection[num]
+        chars_found += chars_selection[i]
 
     # TODO: Randomization
     return chars_found
@@ -60,19 +60,24 @@ def get_chars_of_type(num: int, char_type: str):
 # to build an unsorted string, then randomizes the position of each char in a string, then
 # returns the randomized string as a strong password.
 def build_password_with_chars(alphabet_num: int, numeric_num: int, special_num: int):
-    password = ""
-    password += (get_chars_of_type(alphabet_num, "alphabet"),
-                 get_chars_of_type(numeric_num, "numeric"),
-                 get_chars_of_type(special_num, "special"))
+    temp_password = ""
+    temp_password += (get_chars_of_type(alphabet_num, "alphabet")
+                      + get_chars_of_type(numeric_num, "numeric")
+                      + get_chars_of_type(special_num, "special")
+                      )
 
-    # TODO: randomize the chars position in the password
-    return password
+    # Use random lib to shuffle password (randomize char order/jumble it)
+    char_list = list(temp_password)  # Convert to list
+    random.shuffle(char_list)  # Shuffle
+    temp_password = ''.join(char_list)  # Convert back to str
+
+    return temp_password
 
 
 # PROGRAM
 # Startup message
 print("\nRandom Password Generator\n")
-print(get_chars_of_type(1, "alphabet")) # testing only, to be removed
+print(get_chars_of_type(1, "alphabet"))  # testing only, to be removed
 
 # Get the desired password length
 while password_len == 0:
@@ -97,7 +102,7 @@ while password_len == 0:
 
 
 # Get the desired numeric characters
-alphabet_chars_num = password_len - (numeric_chars_num + special_chars_num)
+alphabet_chars_num = 4#password_len - (numeric_chars_num + special_chars_num)
 
 
 # Build the password
