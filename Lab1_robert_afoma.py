@@ -82,29 +82,62 @@ def build_password_with_chars(alphabet_num: int, numeric_num: int, special_num: 
 # PROGRAM
 # Startup message
 print("\nRandom Password Generator\n")
-print(get_chars_of_type(1, "alphabet"))  # testing only, to be removed
 
 # Get the desired password length
 while password_len == 0:
+    # Use boolean to track validation
     valid_length = False
     try:
+        # Get input and, if invalid, print an error message. Otherwise, assign it and break the while loop.
         proposed_length = int(input("Please input your desired password length: "))
         if proposed_length < MIN_PASSWORD_LENGTH or proposed_length > MAX_PASSWORD_LENGTH:
             print(f"\nPassword must be within the length range of {MIN_PASSWORD_LENGTH} to {MAX_PASSWORD_LENGTH}.")
             print("Please input a new desired password length.\n")
         else:
             password_len = proposed_length
+            valid_length = True
     except:
         print("\n***INPUT ERROR***\nPlease use numeric characters only.\n")
 
 
 # Get the desired numeric characters
-# TODO: Add similar while loop to above for special chars
+while numeric_chars_num == 0:
+    # Establish the max number of numeric characters possible and prep error msg for 120char line restriction
+    max_numeric_chars = password_len - MIN_NUMERIC_CHAR - MIN_SPECIAL_CHAR
+    error_msg = f"\n***INPUT ERROR***\nPlease input a number in range {MIN_NUMERIC_CHAR} to {max_numeric_chars}.\n"
+
+    # Use boolean to track validation
+    valid_num = False
+    try:
+        # Get input and, if valid, assign it as the num. Otherwise, print error_msg
+        proposed_num = int(input("Please input your desired number of numeric characters: "))
+        if MIN_NUMERIC_CHAR <= proposed_num <= max_numeric_chars:
+            numeric_chars_num = proposed_num
+            valid_num = True
+        else:
+            print(error_msg)
+    except:
+        print(error_msg)
 
 
 # Get the desired numeric characters
-# TODO: Add similar while loop to above for special chars
+while special_chars_num == 0:
+    # Establish the max number of numeric characters possible and prep error msg for 120char line restriction
+    max_special_chars = password_len - numeric_chars_num - MIN_ALPHABET_CHAR
+    error_msg = f"\n***INPUT ERROR***\nPlease input a number in range {MIN_SPECIAL_CHAR} to {max_special_chars}.\n"
 
+    # Use boolean to track validation
+    valid_num = False
+    try:
+        # Get input and, if valid, assign it as the num. Otherwise, print error_msg
+        proposed_num = int(input("Please input your desired number of special characters: "))
+        if MIN_SPECIAL_CHAR <= proposed_num <= max_special_chars:
+            special_chars_num = proposed_num
+            valid_num = True
+        else:
+            print(error_msg)
+    except:
+        print(error_msg)
 
 # Get the desired numeric characters
 alphabet_chars_num = password_len - (numeric_chars_num + special_chars_num)
