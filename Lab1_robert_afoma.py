@@ -13,7 +13,7 @@ import string
 # CONSTS
 # Const minimum password length
 MIN_PASSWORD_LENGTH = 8
-MAX_PASSWORD_LENGTH = 24
+MAX_PASSWORD_LENGTH = 64
 
 # Const minimum(s) for three key char types:
 # (alphabetical, numeric, and special)
@@ -39,6 +39,7 @@ special_chars_num = 0
 
 # Var to store the actual password
 password = ""
+
 
 # FUNCTIONS
 # get_chars_of_type is the main function that will grab number of characters
