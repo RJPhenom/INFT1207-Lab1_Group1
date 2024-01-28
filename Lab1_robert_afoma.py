@@ -90,7 +90,8 @@ while password_len == 0:
         # Get input and, if invalid, print an error message. Otherwise, assign it and break the while loop.
         proposed_length = int(input("Please input your desired password length: "))
         if proposed_length < MIN_PASSWORD_LENGTH or proposed_length > MAX_PASSWORD_LENGTH:
-            print(f"\nPassword must be within the length range of {MIN_PASSWORD_LENGTH} to {MAX_PASSWORD_LENGTH}.")
+            print("\n***INPUT ERROR***")
+            print(f"Password must be within the length range of {MIN_PASSWORD_LENGTH} to {MAX_PASSWORD_LENGTH}.")
             print("Please input a new desired password length.\n")
         else:
             password_len = proposed_length
