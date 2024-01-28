@@ -39,7 +39,7 @@ special_chars_num = 0
 
 # Var to store the actual password
 password = ""
-
+#test
 
 # FUNCTIONS
 # get_chars_of_type is the main function that will grab number of characters
